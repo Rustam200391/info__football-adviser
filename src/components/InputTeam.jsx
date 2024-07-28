@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "./InputTeam.css";
+import TeamInfo from "./TeamInfo";
 
 const InputTeam = () => {
   const [teamName, setTeamName] = useState("");
@@ -14,17 +16,19 @@ const InputTeam = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={teamName}
-          onChange={handleChange}
-          placeholder="Введите название команды"
-        />
-        <button type="submit">Отправить</button>
-      </form>
-      {displayName && <h2>Ваша любимая команда: {displayName}</h2>}
+    <div className="input-team-container">
+      <div className="input-team">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={teamName}
+            onChange={handleChange}
+            placeholder="Введите название команды"
+          />
+          <button type="submit">Отправить</button>
+        </form>
+      </div>
+      {displayName && <TeamInfo teamName={displayName} />}
     </div>
   );
 };
